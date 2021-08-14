@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui"
+    >
+
+<h:head>
+     <title>Cadastro Web</title>
+      <h:outputStylesheet library="css" name="register.css"/>
+</h:head>
+<h:body>
+    <main>
+        <div class="header" >
+          <p:graphicImage library="imagens" name="logotext.png"/>
+          <h1><h:outputText value="Cadastro Personal:"/></h1>
+        </div>
+        <h:form>
+         <div class="p-field p-grid">
+            <label for="nome" class="p-col-fixed" style="width:200px">Nome :</label>
+            <p:inputText id="nome" type="text" value="#{personalMB.personal.nome}" />
+         </div>
+         <div class="p-field p-grid">
+            <label for="nascimento" class="p-col-fixed" style="width:200px">Data de Nascimento :</label>
+            <p:inputText id="nascimento" type="text" value="#{personalMB.personal.nascimento}" />
+         </div>
+         <div class="p-field p-grid">
+            <label for="endereco" class="p-col-fixed" style="width:200px">Endereço :</label>
+            <p:inputText id="endereco" type="text" value="#{personalMB.personal.endereco}" />
+         </div>
+         <div class="p-field p-grid">
+            <label for="cidade" class="p-col-fixed" style="width:200px">Cidade :</label>
+            <p:inputText id="cidade" type="text" value="#{personalMB.personal.cidade}"/>
+         </div>
+         <div class="p-field p-grid">
+            <label for="email" class="p-col-fixed" style="width:200px">Email :</label>
+            <p:inputText id="email" type="text" value="#{personalMB.personal.email}" />
+         </div>
+         <div class="p-field p-grid">
+            <label for="senha" class="p-col-fixed" style="width:200px">Senha :</label>
+            <p:password id="senha" value="#{personalMB.personal.senha}" />
+         </div>
+         <div class="button-container">
+             <p:commandButton value="Salvar" action="#{personalMB.salvar}"/>
+         </div>
+        </h:form>
+    </main>
+</h:body>
+</html>
