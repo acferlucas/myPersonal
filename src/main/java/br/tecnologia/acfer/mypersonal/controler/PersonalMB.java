@@ -20,7 +20,19 @@ public class PersonalMB implements Serializable{
     @EJB
     private PersonalRepository personalRepository;
     
+     private List<Personal> personais;
     
+     
+     
+    @PostConstruct
+    public void init(){
+        System.out.println("Iniciando via JSF - ViewScoped");
+       
+        this.personais = personalRepository.findAll();
+    }
+     
+     
+     
     public Personal getPersonal() {
         return personal;
     }
@@ -44,8 +56,14 @@ public class PersonalMB implements Serializable{
         personalRepository.create(p);
         System.out.println("Personal " + personal.getNome()+ "Salvo com sucesso");
         
-        return "index.xhtml";
+        return "usuariosLista.xhtml";
     }
+
+    public List<Personal> getPersonais() {
+        return personais;
+    }
+    
+    
     
     
 }

@@ -9,7 +9,7 @@
         
     </h:head>
     <h:body>
-        <p:dataTable id="personais" var="personal" value="#{personalView.personais}">
+        <p:dataTable id="personais" var="personal" value="#{personalMB.personais}">
             <p:column headerText="Code">
                 <h:outputText value="#{personal.id}" />
             </p:column>
@@ -23,5 +23,19 @@
                 <h:outputText value="#{personal.cidade}" />
             </p:column>
           </p:dataTable>
+        <p:dataTable id="personais" var="aluno" value="#{alunoMB.alunos}">
+            <p:column headerText="Code">
+                <h:outputText value="#{aluno.id}" />
+            </p:column>
+            <p:column headerText="nome">
+                <h:outputText value="#{aluno.nome}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{aluno.email}" />
+            </p:column>
+            <p:column headerText="Cidade">
+                <h:outputText value="#{aluno.cidade}" />
+            </p:column>
+          </p:dataTable>   
     </h:body>
 </html>

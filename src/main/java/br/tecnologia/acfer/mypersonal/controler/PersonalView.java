@@ -23,7 +23,7 @@ public class PersonalView implements Serializable{
     @PostConstruct
     public void init(){
         System.out.println("Iniciando via JSF - ViewScoped");
-        System.out.println(personalRepository.findAll());
+       
         this.personais = personalRepository.findAll();
     }
 

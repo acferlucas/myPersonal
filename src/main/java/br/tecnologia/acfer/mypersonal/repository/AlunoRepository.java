@@ -19,7 +19,10 @@ public class AlunoRepository {
         entityManager.persist(aluno);
         
     }
-    public List<Aluno> getall(){
-        return new ArrayList<Aluno>();
+     
+     
+    public List<Aluno> findAll() {
+        
+           return entityManager.createQuery("SELECT a FROM Aluno a", Aluno.class).getResultList();
     }
 }

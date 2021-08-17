@@ -21,9 +21,9 @@ public class PersonalRepository {
         
     }
     
-        @SuppressWarnings("unchecked")
+     
        public List<Personal> findAll() {
-         return entityManager.createQuery("FROM " +
-         Personal.class.getName()).getResultList();
-       }
+        
+           return entityManager.createQuery("SELECT a FROM Personal a", Personal.class).getResultList();
+    }
 }

@@ -3,6 +3,8 @@ package br.tecnologia.acfer.mypersonal.controler;
 
 import br.tecnologia.acfer.mypersonal.model.Aluno;
 import br.tecnologia.acfer.mypersonal.repository.AlunoRepository;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -16,7 +18,16 @@ public class AlunoMB {
     
     @EJB
     private AlunoRepository alunoRepository;
+    
+    List<Aluno> alunos;
 
+    @PostConstruct
+    public void init(){
+        System.out.println("Iniciando via JSF - ViewScoped");
+       
+        this.alunos = alunoRepository.findAll();
+    }
+    
     public Aluno getAluno() {
         return aluno;
     }
@@ -42,6 +53,9 @@ public class AlunoMB {
         
         return "index.xhtml";
     }
-    
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
     
 }
