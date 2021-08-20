@@ -18,6 +18,8 @@
           <h1><h:outputText value="Cadastro Personal:"/></h1>
         </div>
         <h:form>
+            <f:event listener="#{personalMB.validatePassword}"
+            type="postValidate" />
          <div class="p-field p-grid">
             <label for="nome" class="p-col-fixed" style="width:200px">Nome :</label>
             <p:inputText id="nome" type="text" value="#{personalMB.personal.nome}" />

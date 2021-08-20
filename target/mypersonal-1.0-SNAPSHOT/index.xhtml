@@ -15,18 +15,18 @@
          </div>
          <h:form id="formLogin">
            <p:panelGrid columns="2">
-               <p:outputLabel value="Username:"/>
-               <p:inputText required="true"/>
+               <p:outputLabel value="E-mail:"/>
+               <p:inputText id="email" type="text" value="#{loginMB.email}" required="true" requiredMessage="E-mail obrigatório"/>
                  <p:outputLabel value="Senha:"/>
-                 <p:password required="true"/>
+                 <p:inputSecret id="password" type="text" value="#{loginMB.password}"   required="true" requiredMessage="Please enter password"/>
            </p:panelGrid>
            <div class="button-container">
-               <p:button value="Submit" />
+               <p:button action="#{loginMB.login}" value="Submit" />
            </div>
           </h:form>
           <div class="card">
               <p:link outcome="cadastropersonal.xhtml" value="Que se cadastrar como Personal ? clique aqui"/>
-              <p:link outcome="cadastroaluno.xhtml" value="Que se cadastrar como Aluno ? clique aqui"/>
+              
           </div>
       </main>
     </h:body>

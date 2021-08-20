@@ -1,6 +1,9 @@
 br\tecnologia\acfer\mypersonal\controler\PersonalView.class
 br\tecnologia\acfer\mypersonal\repository\PersonalRepository.class
+br\tecnologia\acfer\mypersonal\controler\LoginMB.class
+br\tecnologia\acfer\mypersonal\util\AuthenticationUtils.class
 br\tecnologia\acfer\mypersonal\controler\AlunoMB.class
+br\tecnologia\acfer\mypersonal\model\Group.class
 br\tecnologia\acfer\mypersonal\model\Personal.class
 br\tecnologia\acfer\mypersonal\repository\AlunoRepository.class
 br\tecnologia\acfer\mypersonal\controler\PersonalMB.class

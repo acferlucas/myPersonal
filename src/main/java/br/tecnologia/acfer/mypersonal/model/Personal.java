@@ -3,26 +3,35 @@ package br.tecnologia.acfer.mypersonal.model;
 
 import java.io.Serializable;
 import javax.ejb.Stateful;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Stateful
 @Entity
-@Table(name = "Personal")
+@Table(name = "Personais")
+@NamedQueries({
+    @NamedQuery(name = "findUserById", query = "SELECT u FROM Personal u WHERE u.email = :email") })
 public class Personal implements Serializable{
     private static final long serialVersionUID = 1L;
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+   // @Id
+   // @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
     private String nome ;
     private String nascimento;
     private String cidade;
+    @Id
+    @Column(name="email", nullable=false, length=255)
     private String email;
+    
+    @Column(name="senha", nullable=false, length=64)
     private String senha ;
     private String endereco;
 
