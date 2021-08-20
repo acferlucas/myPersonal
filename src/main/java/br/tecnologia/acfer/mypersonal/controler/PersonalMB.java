@@ -5,23 +5,45 @@ import br.tecnologia.acfer.mypersonal.model.Personal;
 import br.tecnologia.acfer.mypersonal.repository.PersonalRepository;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Logger;
+
+import javax.faces.application.FacesMessage;
+
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
+import javax.inject.Inject;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+
 @RequestScoped
 @Named
 public class PersonalMB implements Serializable{
     
+	private static Logger log = Logger.getLogger(PersonalMB.class.getName());
+	
+	
     @EJB
     private Personal personal;
     
     @EJB
     private PersonalRepository personalRepository;
     
+    private String validaemail;
     
-    public Personal getPersonal() {
+    public String getValidaemail() {
+		return validaemail;
+	}
+
+	public void setValidaemail(String validaemail) {
+		this.validaemail = validaemail;
+	}
+
+	public Personal getPersonal() {
         return personal;
     }
 
@@ -39,6 +61,7 @@ public class PersonalMB implements Serializable{
        p.setNascimento(personal.getNascimento());
        p.setEmail(personal.getEmail());
        p.setSenha(personal.getSenha());
+       validaemail = personal.getEmail();
        
         
         personalRepository.create(p);
@@ -47,5 +70,24 @@ public class PersonalMB implements Serializable{
         return "index.xhtml";
     }
     
+    public void validatePassword(ComponentSystemEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent();
+        // get password
+        UIInput uiInputPassword = (UIInput) components.findComponent("senha");
+        String password = uiInputPassword.getLocalValue() == null ? "" : uiInputPassword.getLocalValue().toString();
+        String passwordId = uiInputPassword.getClientId();
+
+        // Let required="true" do its job.
+        if (password.isEmpty()) {
+            return;
+        }
+        if (personalRepository.findUserById(validaemail) != null) {
+            FacesMessage msg = new FacesMessage("User with this e-mail already exists");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            facesContext.addMessage(passwordId, msg);
+            facesContext.renderResponse();
+        }
+    }
     
 }
