@@ -18,10 +18,10 @@
                <p:outputLabel value="E-mail:"/>
                <p:inputText id="email" type="text" value="#{loginMB.email}" required="true" requiredMessage="E-mail obrigatório"/>
                  <p:outputLabel value="Senha:"/>
-                 <p:inputSecret id="password" type="text" value="#{loginMB.password}"   required="true" requiredMessage="Please enter password"/>
+                 <p:password id="password" value="#{loginMB.password}" required="true" requiredMessage="Senha obrigatória"/>
            </p:panelGrid>
            <div class="button-container">
-               <p:button action="#{loginMB.login}" value="Submit" />
+               <h:commandButton action="#{loginMB.login}" value="Submit" />
            </div>
           </h:form>
           <div class="card">

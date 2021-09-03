@@ -44,7 +44,7 @@ public class LoginMB implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         try {
-            request.login(email, password);
+            request.login(this.email, this.password);
         } catch (ServletException e) {
     		System.out.println("Hello World!!!!!");
         	System.out.println("login falhou");

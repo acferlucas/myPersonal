@@ -81,7 +81,7 @@ public class PersonalMB implements Serializable{
         personalRepository.create(p);
         System.out.println("Personal " + personal.getNome()+ "Salvo com sucesso");
         
-        return "usuariosLista.xhtml";
+        return "index.xhtml";
     }
 
     public List<Personal> getPersonais() {
